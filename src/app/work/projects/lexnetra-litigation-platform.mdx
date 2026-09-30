@@ -1,0 +1,32 @@
+---
+title: "LexNETRA — Digital Litigation Management System"
+publishedAt: "2025-06-01"
+summary: "Enterprise tax litigation platform for Maruti Suzuki, built as 8 independently deployable microfrontends with React 19, TypeScript, and Module Federation."
+images:
+  - "/images/projects/lexnetra/cover-clean.webp"
+team:
+  - name: "Sai Manoj Matta"
+    role: "Software Engineer"
+    avatar: "/images/avatar-manoj.png"
+    linkedIn: "https://www.linkedin.com/in/sai-manoj-07114b238/"
+---
+
+## Overview
+
+LexNETRA is an enterprise digital litigation management platform built for Maruti Suzuki at DevDolphins. It's an internal client product, so there's no public link — this is a summary of the engineering work rather than a live demo.
+
+## Key Features
+
+- **Microfrontend architecture**: Architected 8 independently deployable microfrontends using React 19, TypeScript, Vite, Redux Toolkit, and Module Federation, so teams could ship modules without blocking each other.
+- **Secure cloud deployment**: Designed the Google Cloud deployment strategy — private GCS buckets, Cloud CDN, an internal load balancer, and Cloud Armor — enabling independent releases while keeping access corporate-only.
+- **SSO-based RBAC**: Implemented role-based access control across 8 user roles spanning Direct Tax and Indirect Tax modules.
+- **Case Tree navigation**: Built an interactive Case Tree to simplify navigation through the litigation lifecycle.
+- **AI-assisted intake**: Delivered an AI-assisted document intake workflow and reusable, config-driven analytics dashboards that automate legal data extraction across multiple tax domains.
+
+## Technologies Used
+
+React 19, TypeScript, Vite, Redux Toolkit, Module Federation, Google Cloud (GCS, Cloud CDN, Cloud Armor).
+
+## Outcome
+
+The platform gives legal teams independent, corporate-only access to litigation data with role-scoped views, while the microfrontend split lets each module release on its own cadence instead of a single monolithic deploy.

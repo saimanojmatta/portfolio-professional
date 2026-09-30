@@ -1,50 +1,35 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-  locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
+  firstName: "Sai Manoj",
+  lastName: "Matta",
+  name: `Sai Manoj Matta`,
+  role: "Frontend Software Engineer",
+  avatar: "/images/avatar-manoj.png",
+  email: "saimanoj14433@gmail.com",
+  location: "Asia/Kolkata", // Kakinada, Andhra Pradesh, India
+  languages: [], // TODO: add languages if you'd like them displayed
+  locale: "en",
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false, // no newsletter provider connected yet
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>Occasional notes on frontend engineering and shipping products</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/saimanojmatta",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/sai-manoj-07114b238/",
     essential: true,
   },
   {
@@ -57,28 +42,32 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: `/api/og/generate?title=${encodeURIComponent(person.name)}`,
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} – Portfolio`,
+  description: `Portfolio of ${person.name}, a ${person.role} building enterprise web and mobile products`,
+  headline: <>Turning complex problems into fast, reliable interfaces</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">LexNETRA</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/lexnetra-litigation-platform",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I'm Manoj, a {person.role.toLowerCase()} with 2 years of
+      experience building enterprise web and hybrid mobile apps with{" "}
+      <Text as="span" size="xl" weight="strong">
+        React, TypeScript &amp; React Native
+      </Text>
+      . <br /> I ship microfrontends, cloud deployments, and products from dev to production.
     </>
   ),
 };
@@ -87,7 +76,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} based in Kakinada, Andhra Pradesh`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,60 +85,59 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false, // TODO: turn on once a real booking link is set up
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Manoj is a Kakinada, India-based frontend software engineer with 2 years of experience
+        building enterprise web and hybrid mobile applications using React, TypeScript, and React
+        Native. He's worked across microfrontend architecture, cloud deployments, and delivering
+        scalable products from development to production.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "DevDolphins",
+        timeframe: "08/2024 – Present",
+        role: "Software Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Led frontend development of LexNETRA, an enterprise tax litigation platform for
+            Maruti Suzuki, architecting 8 independently deployable microfrontends with React 19,
+            TypeScript, Vite, Redux Toolkit, and Module Federation.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Designed a secure deployment strategy on Google Cloud using private GCS buckets, Cloud
+            CDN, an internal load balancer, and Cloud Armor, enabling independent releases and
+            corporate-only access.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Implemented SSO-based RBAC across 8 user roles and built an interactive case tree to
+            simplify navigation through the litigation lifecycle, plus an AI-assisted document
+            intake workflow.
+          </>,
+          <>
+            Owned the Marketing PRO hybrid app for Vidyasys (React Native + Expo + WebView),
+            integrating GPS tracking, biometrics, camera access, and offline functionality on top
+            of a shared web codebase.
+          </>,
+          <>
+            Built the Marketing Suite, a unified React admin portal consolidating fee management,
+            contact management, PRO registrations, settlements, and analytics with shared
+            real-time data.
+          </>,
+          <>
+            Built an end-to-end Instamojo payment workflow for GetEntrepcare, securing webhooks
+            with HMAC signature verification and protecting APIs with Auth0 + JWT-based
+            authorization.
           </>,
         ],
         images: [],
@@ -157,90 +145,69 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Pragati Engineering College, Surampalem",
+        description: (
+          <>
+            Bachelor of Technology in Electronics and Communication Engineering, 8 CGPA (09/2019 –
+            06/2023)
+          </>
+        ),
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Frontend",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Building responsive, accessible interfaces with React and modern UI libraries.</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "React", icon: "react" },
+          { name: "TypeScript", icon: "typescript" },
+          { name: "Redux Toolkit", icon: "redux" },
+          { name: "Tailwind CSS", icon: "tailwindcss" },
+          { name: "JavaScript", icon: "javascript" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
+        title: "Mobile",
+        description: <>Shipping hybrid mobile apps with native device capabilities.</>,
+        tags: [{ name: "React Native (Expo)", icon: "react" }],
+        images: [],
+      },
+      {
+        title: "Backend",
+        description: <>Building REST APIs and services to support frontend applications.</>,
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Node.js", icon: "nodejs" },
+          { name: "Express.js", icon: "express" },
+          { name: "MongoDB", icon: "mongodb" },
+          { name: "Python", icon: "python" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "Tools & Cloud",
+        description: <>Day-to-day tooling for shipping and deploying products.</>,
+        tags: [
+          { name: "Git", icon: "git" },
+          { name: "Google Cloud", icon: "googlecloud" },
+          { name: "Figma", icon: "figma" },
+          { name: "Postman", icon: "postman" },
+          { name: "Jira", icon: "jira" },
         ],
+        images: [],
       },
     ],
   },
-};
-
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
@@ -248,59 +215,7 @@ const work: Work = {
   label: "Work",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  // Create new project pages by adding a new .mdx file to app/work/projects
 };
 
-const gallery: Gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
-};
-
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, work };

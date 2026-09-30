@@ -1,0 +1,31 @@
+---
+title: "GetEntrepcare — Secure Payment Workflow"
+publishedAt: "2024-10-01"
+summary: "End-to-end Instamojo payment workflow with OAuth2, HMAC-verified webhooks, and Auth0-based role authorization."
+images:
+  - "/images/projects/getentrepcare/cover-clean.webp"
+team:
+  - name: "Sai Manoj Matta"
+    role: "Software Engineer"
+    avatar: "/images/avatar-manoj.png"
+    linkedIn: "https://www.linkedin.com/in/sai-manoj-07114b238/"
+---
+
+## Overview
+
+GetEntrepcare needed a secure, end-to-end payment workflow. It's an internal client product, so there's no public link — this is a summary of the engineering work rather than a live demo.
+
+## Key Features
+
+- **Payment workflow**: Built the end-to-end Instamojo payment workflow, integrating OAuth2 authentication, payment requests, and MongoDB-backed order management.
+- **Webhook security**: Secured payment processing by implementing HMAC signature verification on payment webhooks, preventing unauthorized payment status updates.
+- **Auth & authorization**: Integrated Auth0 authentication and role-based authorization using JWTs to protect payment APIs and administrative operations.
+- **Post-payment automation**: Automated post-payment workflows by syncing purchase data with user profiles and integrating SendGrid for payment confirmation and support emails.
+
+## Technologies Used
+
+Node.js, Express.js, MongoDB, Instamojo API, Auth0, JWT, SendGrid.
+
+## Outcome
+
+Payment status updates are now verified end-to-end via HMAC signatures before they touch order records, closing off a class of webhook-spoofing issues while keeping the post-payment flow (confirmation emails, profile sync) fully automated.
